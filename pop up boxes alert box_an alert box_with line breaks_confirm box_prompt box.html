@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h1>Form Validation with Password Activation</h1>
+    <form id="myForm">
+        <label for="Mno">Mobile Number</label>
+        <input type="text" name="Mno" id="Mno" disabled>
+        <br>
+        <br>
+        <label for="email">Email</label>
+        <input type="text" name="email" id="email" disabled>
+        <br>
+        <br>
+        <button onclick="activateTextboxes(event)">Activate Textboxes</button>
+        <button onclick="submitForm()">Submit</button>
+    </form>
+    
+    <script>
+        function activateTextboxes(event) {
+            event.preventDefault(); // Prevent form submission
+            var password = prompt("Please enter your password:");
+            
+            if (password === "1234") {
+                // Enable the textboxes
+                document.getElementById("Mno").removeAttribute("disabled");
+                document.getElementById("email").removeAttribute("disabled");
+                alert("Password is correct! You can proceed.");
+            } else {
+                // If the password is incorrect, show an error message
+                alert("Incorrect password. Textboxes not activated.");
+            }
+        }
+    
+        function submitForm() {
+            // Here you can add the code to submit the form
+            alert("Form submitted!");
+        }
+    </script>
+    
+    </body>
+</html>

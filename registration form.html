@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        form{
+            max-width: 600px;
+            width: 100%;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0,0, 0.5);
+            border-radius: 8px;
+        }
+        label{
+            display: block;
+            margin-bottom: 1px;
+            font-weight: bold;
+        }
+
+        input{
+            
+            padding: 10px;
+            border-radius: 4px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+        input[type="submit"]{
+            background-color: #45a049;
+            color: white;
+
+        }
+        input[type="submit"].hover{
+            background-color: #45a049;
+            color: white;
+
+        }
+
+        .error{
+            color: red;
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <form id="registrationForm" action="#" method="post">
+        <h2>Registration Form</h2>
+        <label for="firstName">First Name:</label><br>
+        <input type="text" id="firstName" name="firstName">
+        <span id="firstNameError" class="error"></span><br>
+        
+        <label for="lastName">Last Name:</label><br>
+        <input type="text" id="lastName" name="lastName">
+        <span id="lastNameError" class="error"></span><br>
+        
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email">
+        <span id="emailError" class="error"></span><br>
+        
+        <label for="password">Password:</label><br>
+        <input type="password" id="password" name="password">
+        <span id="passwordError" class="error"></span><br>
+        
+        <input type="submit" value="Register">
+    </form>
+    <script>
+        const form = document.getElementById('registrationForm');
+        const firstName = document.getElementById('firstName');
+        const lastName = document.getElementById('lastName');
+        const email = document.getElementById('email');
+        const password = document.getElementById('password');
+        const firstNameError = document.getElementById('firstNameError');
+        const lastNameError = document.getElementById('lastNameError');
+        const emailError = document.getElementById('emailError');
+        const passwordError = document.getElementById('passwordError');
+
+        form.addEventListener('submit', function(event) {
+            let hasError = false;
+
+            // Validate first name
+            if (firstName.value === '') {
+                firstNameError.textContent = 'First name is required';
+                hasError = true;
+            } else {
+                firstNameError.textContent = '';
+            }
+
+         
+            if (lastName.value === '') {
+                lastNameError.textContent = 'Last name is required';
+                hasError = true;
+            } else {
+                lastNameError.textContent = '';
+            }
+
+            
+            if (email.value === '') {
+                emailError.textContent = 'Email is required';
+                hasError = true;
+            
+            } else {
+                emailError.textContent = '';
+            }
+
+            if (password.value === '') {
+                passwordError.textContent = 'Password is required';
+                hasError = true;
+            } else if (password.value.length < 8) {
+                passwordError.textContent = 'Password must be at least 8 characters long';
+                hasError = true;
+            } else {
+                passwordError.textContent = '';
+            }
+
+            if (hasError) {
+                event.preventDefault(); // Prevent form submission if there are errors
+            }
+        });
+    </script>
+</body>
+</html>
